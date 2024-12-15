@@ -54,10 +54,10 @@ def generate_image(prompt):
                 "width": 512,
                 "height": 512,
                 "prompt": prompt,
-                "scheduler": "EulerAncestralDiscrete",
+                "scheduler": "K_Euler",
                 "num_outputs": 4,
-                "guidance_scale": 10,
-                "num_inference_steps": 75,
+                "guidance_scale": 15,
+                "num_inference_steps": 100,
             }
         )
         # Debugging: Inspect output format
