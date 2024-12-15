@@ -84,11 +84,11 @@ if st.button("Generate Design"):
         st.warning("Please fill out all required fields.")
     else:
         # Enhanced prompt to emphasize the fabric color
-        prompt = (
-            f"A {clothing_type} designed for a woman, made with {fabric_type} fabric that is predominantly {fabric_color_name}. "
-            f"The design should prominently feature {fabric_color_name} and be child-friendly, suitable for a 9-year-old. "
-            f"Ensure the {clothing_type} is elegant, vibrant, and playful, using {thread_type} thread. "
-            f"{additional_details} No nudity, no violence, and no suggestive themes."
+        prompt = (    
+            f"A {fabric_color_name} {clothing_type} made of {fabric_type} with {thread_type} thread. "
+            f"The {fabric_color_name} design should be worn by a woman and should be modest and elegant. "
+            f"The image should be child-friendly and suitable for a 9-year-old."
+            f"No nudity, no violence, no suggestive themes."
         )
         
         st.write("Generating your design...")
@@ -96,7 +96,9 @@ if st.button("Generate Design"):
         try:
             image_path = generate_image(prompt)
             # Display the generated image
-            st.image(image_path, caption="Your AI-generated design")
+            #st.image(image_path, caption="Your AI-generated design")
+            st.image(image_path, caption=prompt)
+            
             # Provide a download button
             with open(image_path, "rb") as img_file:
                 st.download_button(
