@@ -2,3 +2,4 @@ streamlit
 replicate
 python-dotenv
 pillow>=9.5.0,<10.0.0
+webcolors
