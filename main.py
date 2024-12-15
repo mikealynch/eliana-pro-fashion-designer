@@ -54,7 +54,7 @@ def generate_image(prompt):
                 "width": 512,
                 "height": 512,
                 "prompt": prompt,
-                "scheduler": "K_Euler",
+                "scheduler": "K_EULER",
                 "num_outputs": 4,
                 "guidance_scale": 15,
                 "num_inference_steps": 100,
