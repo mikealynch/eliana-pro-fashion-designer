@@ -85,7 +85,7 @@ if st.button("Generate Design"):
     else:
         # Enhanced prompt to emphasize the fabric color
         prompt = (    
-                       f"A woman wearing a {fabric_color_name} {fabric_type}. The image style should be high quality fashion magazine photo shoot. {fabric_color_name} should be the primary color on the {clothing_type}. No nudity."
+                       f"A highly detailed and vibrant {fabric_color_name} {clothing_type} made of {fabric_type}, worn by a woman, child-friendly, elegant and playful, professional fashion photoshoot, intricate fabric texture, high-quality studio lighting."
         )
         
         st.write("Generating your design...")
