@@ -54,8 +54,8 @@ def generate_image(prompt):
                 "width": 512,
                 "height": 512,
                 "prompt": prompt,
-                "scheduler": "DPMSolverMultistep",
-                "num_outputs": 1,
+                "scheduler": "EulerAncestralDiscrete",
+                "num_outputs": 4,
                 "guidance_scale": 10,
                 "num_inference_steps": 75,
             }
