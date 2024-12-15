@@ -83,12 +83,12 @@ if st.button("Generate Design"):
     if not fabric_type or not thread_type:
         st.warning("Please fill out all required fields.")
     else:
-        # Create a prompt with child-appropriate and woman-specific instructions
+        # Enhanced prompt to emphasize the fabric color
         prompt = (
-            f"A {fabric_color_name} {clothing_type} made of {fabric_type} with {thread_type} thread. "
-            f"The design should be worn by a woman and should be modest and elegant. "
-            f"The image should be child-friendly, colorful, and suitable for a 9-year-old. "
-            f"Ensure the style is vibrant, fun, and playful. No nudity, no violence, no suggestive themes."
+            f"A {clothing_type} designed for a woman, made with {fabric_type} fabric that is predominantly {fabric_color_name}. "
+            f"The design should prominently feature {fabric_color_name} and be child-friendly, suitable for a 9-year-old. "
+            f"Ensure the {clothing_type} is elegant, vibrant, and playful, using {thread_type} thread. "
+            f"{additional_details} No nudity, no violence, and no suggestive themes."
         )
         
         st.write("Generating your design...")
@@ -107,4 +107,3 @@ if st.button("Generate Design"):
                 )
         except Exception as e:
             st.error(f"An error occurred: {e}")
-
