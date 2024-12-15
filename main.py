@@ -2,7 +2,7 @@ import os
 import streamlit as st
 import replicate
 from dotenv import load_dotenv
-
+import webcolors
 
 # Load environment variables
 load_dotenv()
@@ -19,6 +19,16 @@ else:
 st.title("Eliana's Pro Fashion Designer")
 st.write("Design your dream clothing with AI-powered fashion design.")
 
+# Function to convert hex color to approximate text name
+def hex_to_name(hex_color):
+    try:
+        # Get the closest CSS3 color name
+        color_name = webcolors.hex_to_name(hex_color, spec='css3')
+    except ValueError:
+        # If no exact match is found, use the hex value as a fallback
+        color_name = f"hex color {hex_color}"
+    return color_name
+
 # User input for attributes
 clothing_type = st.selectbox(
     "Choose the type of clothing:",
@@ -26,7 +36,8 @@ clothing_type = st.selectbox(
 )
 
 fabric_type = st.text_input("Enter the fabric type (e.g., cotton, silk, denim):")
-fabric_color = st.color_picker("Pick a fabric color:")
+fabric_color_hex = st.color_picker("Pick a fabric color:")
+fabric_color_name = hex_to_name(fabric_color_hex)  # Convert hex to name
 thread_type = st.text_input("Enter the thread type (e.g., polyester, cotton):")
 additional_details = st.text_area("Add additional details (e.g., floral pattern, stripes):")
 
@@ -74,7 +85,7 @@ if st.button("Generate Design"):
         st.warning("Please fill out all required fields.")
     else:
         # Create a prompt based on user inputs
-        prompt = f"A {fabric_color} {clothing_type} made of {fabric_type} with {thread_type} thread. {additional_details}"
+        prompt = f"A {fabric_color_name} {clothing_type} made of {fabric_type} with {thread_type} thread. {additional_details}"
         
         st.write("Generating your design...")
         # Generate image with Replicate's Stable Diffusion
