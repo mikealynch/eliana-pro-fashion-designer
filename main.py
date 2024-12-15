@@ -79,13 +79,17 @@ def generate_image(prompt):
         raise Exception(f"General Error: {e}")
 
 
-# Generate button
 if st.button("Generate Design"):
     if not fabric_type or not thread_type:
         st.warning("Please fill out all required fields.")
     else:
-        # Create a prompt based on user inputs
-        prompt = f"A {fabric_color_name} {clothing_type} made of {fabric_type} with {thread_type} thread. {additional_details}"
+        # Create a prompt with child-appropriate and woman-specific instructions
+        prompt = (
+            f"A {fabric_color_name} {clothing_type} made of {fabric_type} with {thread_type} thread. "
+            f"The design should be worn by a woman and should be modest and elegant. "
+            f"The image should be child-friendly, colorful, and suitable for a 9-year-old. "
+            f"Ensure the style is vibrant, fun, and playful. No nudity, no violence, no suggestive themes."
+        )
         
         st.write("Generating your design...")
         # Generate image with Replicate's Stable Diffusion
@@ -103,3 +107,4 @@ if st.button("Generate Design"):
                 )
         except Exception as e:
             st.error(f"An error occurred: {e}")
+
